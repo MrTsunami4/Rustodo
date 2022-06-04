@@ -1,0 +1,14 @@
+[package]
+name = "rust_db_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.5.6"
+tokio = {version = "1.19.0", features = ["full"]}
+tower = "0.4.12"
+sled = "0.34.7"
+uuid = { version = "1.1.1", features = ["serde", "v4", "fast-rng"] }
+serde = { version = "1.0.137", features = ["derive"] }
