@@ -1,11 +1,11 @@
 use axum::{
     extract::Path, http::StatusCode, response::IntoResponse, routing::get, Extension, Json, Router,
 };
-use sled::Db;
+use sqlite_repo::Db;
 use uuid::Uuid;
 
 use crate::{
-    db::{self, delete_todo_db, read_all_todo_db, read_todo_db, write_todo_db},
+    db::sqlite_repo::{self, delete_todo_db, read_all_todo_db, read_todo_db, write_todo_db},
     models::{Todo, TodoRequest},
 };
 
@@ -45,9 +45,9 @@ pub async fn delete_todo(
     }
 }
 
-pub fn get_router() -> Router {
+pub async fn get_router() -> Router {
     Router::new()
         .route("/", get(read_all_todos).post(create_todo))
         .route("/:id", get(read_todo).delete(delete_todo))
-        .layer(Extension(db::init_db()))
+        .layer(Extension(sqlite_repo::init_db().await))
 }

@@ -8,7 +8,7 @@ mod server;
 
 #[tokio::main]
 async fn main() {
-    let app = routes::get_router();
+    let app = routes::get_router().await;
 
     server::run_server(app).await;
 }

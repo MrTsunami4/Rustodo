@@ -1,2 +1,4 @@
 /target
 /axum_db
+.env
+axum.sqlite*

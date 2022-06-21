@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use sled::Db;
 use uuid::Uuid;
 
