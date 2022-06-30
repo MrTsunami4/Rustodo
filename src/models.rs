@@ -6,6 +6,7 @@ use uuid::Uuid;
 pub struct Todo {
     id: Uuid,
     content: String,
+    completed: bool,
 }
 
 #[derive(Deserialize, Debug)]
@@ -18,11 +19,16 @@ impl Todo {
         Self {
             id: Uuid::new_v4(),
             content: content.to_owned(),
+            completed: false,
         }
     }
 
-    pub const fn from_db(id: Uuid, content: String) -> Self {
-        Self { id, content }
+    pub const fn from_db(id: Uuid, content: String, completed: bool) -> Self {
+        Self {
+            id,
+            content,
+            completed,
+        }
     }
 
     pub fn content(&self) -> &str {
@@ -31,5 +37,8 @@ impl Todo {
 
     pub const fn id(&self) -> &Uuid {
         &self.id
+    }
+    pub const fn completed(&self) -> bool {
+        self.completed
     }
 }

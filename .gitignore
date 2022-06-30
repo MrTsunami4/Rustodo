@@ -2,3 +2,5 @@
 /axum_db
 .env
 axum.sqlite*
+/.idea
+axum.sqlite

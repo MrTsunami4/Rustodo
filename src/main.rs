@@ -1,7 +1,9 @@
 #![warn(clippy::all)]
 #![warn(clippy::nursery)]
 
+mod auth;
 mod db;
+mod jwt;
 mod models;
 mod routes;
 mod server;
